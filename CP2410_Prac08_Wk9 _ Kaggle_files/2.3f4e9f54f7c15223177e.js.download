@@ -1,0 +1,213 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{1673:function(e,a,l){"use strict";l.d(a,"a",(function(){return u}));var t=l(1),n=l.n(t),i=l(0),r=l(374);const o=n.a.div`
+  position: relative;
+`,s=n.a.div`
+  position: absolute;
+  bottom: 100px;
+  width: 1px;
+  height: 1px;
+`;class u extends i.Component{constructor(){super(...arguments),this.ref=i.createRef(),this.wasTriggered=!1,this.timeoutId=null,this.observer=Object(r.b)(([e])=>{this.props.fireOnce?this.props.isDisabled||(this.wasTriggered=!0,this.props.onVisible()):(window.clearInterval(this.intervalId),e.intersectionRatio&&(this.intervalId=window.setInterval(()=>{this.props.isDisabled||this.props.onVisible()},200)))}),this.pollVisibility=()=>{this.props.fireOnce&&!this.props.isDisabled&&!this.timeoutId&&this.isSentinelVisible()&&(this.wasTriggered=!1,this.timeoutId=window.setTimeout(()=>{!this.wasTriggered&&this.isSentinelVisible()&&(this.wasTriggered=!0,this.props.onVisible()),window.clearTimeout(this.timeoutId),this.timeoutId=null},200))}}isSentinelVisible(){if(!this.ref.current)return!1;const e=this.ref.current.getBoundingClientRect(),a=window.innerHeight;return e.bottom<=a}componentDidMount(){this.ref.current&&this.observer.observe(this.ref.current),this.pollingIntervalId=window.setInterval(this.pollVisibility,200)}componentWillUnmount(){window.clearInterval(this.intervalId),window.clearInterval(this.pollingIntervalId),this.observer.disconnect()}render(){return i.createElement(o,null,this.props.children,i.createElement(s,{ref:this.ref}))}}},1773:function(e,a,l){"use strict";l.d(a,"a",(function(){return g}));var t=l(3),n=l(67),i=l(1467),r=l(2364),o=l(1608),s=l(166),u=l(1),c=l.n(u),d=l(0),b=l(174);const v=c.a.div`
+  margin: ${e=>e.theme.material.spacing(2)};
+  width: 100%;
+  overflow-y: visible;
+
+  .searchTextField {
+    width: 100%;
+  }
+
+  .mdc-menu-surface {
+    width: 100%;
+    max-height: 400px;
+  }
+`,m=c()(n.a)`
+  width: ${e=>e.width};
+`;let p=0,h=0;const g=e=>{const{className:a,label:l,small:n,loadOptions:u,onSelect:c,optionRenderer:g=(e=>d.createElement("div",null,e)),shouldExcludeOption:f,disabled:w,hoistToBody:E=!0}=e,[x,S]=d.useState(""),[y,C]=d.useState([]),[M,I]=d.useState(!1),N=d.useRef();d.useEffect(()=>{N.current=Object(b.a)(200,e=>Object(t.__awaiter)(void 0,void 0,void 0,(function*(){I(!0),C([]),p++;const a=p,l=yield u(e),t=f?l.filter(e=>!(null==f?void 0:f(e))):l;a>h&&(h=a,I(!1),C(t))})))},[f]);const T=d.useRef(null);return d.createElement(v,{className:a},d.createElement(i.a,{ref:T},d.createElement(r.a,{placeholder:w?"disabled":l,small:n,disabled:w,value:x,onChange:e=>{var a;S(e.target.value),null===(a=N.current)||void 0===a||a.call(N,e.target.value)},className:"searchTextField"}),d.createElement(o.a,{open:!!x||M,onClose:()=>S(""),anchorCorner:"bottomLeft",hoistToBody:E,style:{zIndex:1001}},d.createElement(m,{className:"fullWidthSelectBoxList",variant:"dense",width:T.current?T.current.getBoundingClientRect().width+"px":"initial"},M&&d.createElement(s.a,null,"Searching..."),!M&&y.map(e=>d.createElement(s.a,{key:e.id,onClick:()=>{S(""),c(e)}},g(e))),!M&&x&&0===y.length&&d.createElement(s.a,null,"No results found.")))))}},1774:function(e,a,l){"use strict";l.d(a,"a",(function(){return b}));var t=l(3),n=l(0),i=l(1),r=l.n(i),o=l(206),s=l(566),u=l(1609),c=l(9);const d=r.a.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 35px;
+`;class b extends n.Component{constructor(e){super(e),this.onAcceptCompetitionRules=()=>Object(t.__awaiter)(this,void 0,void 0,(function*(){Object(c.reportEvent)("kernels","competition-rules-modal-accepted"),this.setState({isProcessingRulesAcceptance:!0}),yield this.props.onAcceptCompetitionRules(),this.setState({isProcessingRulesAcceptance:!1}),this.props.onClose()})),this.onDeclineCompetitionRules=()=>{Object(c.reportEvent)("kernels","competition-rules-modal-declined"),this.props.onClose()},this.renderSingleCompetitionText=()=>n.createElement("div",null,'By clicking on the "I understand and accept" button below, you are indicating that you agree to be bound to the'," ",n.createElement(o.v,{href:this.props.competitions[0].rulesUrl,target:"_blank",rel:"noreferrer noopener"},"competition rules"),"."),this.renderMultipleCompetitionsText=()=>n.createElement("div",null,'By clicking on the "I understand and accept" button below, you are indicating that you agree to be bound to the rules of the following competitions.',n.createElement("div",{style:{marginTop:"15px"}},this.props.competitions.map(this.renderCompetition))),this.renderCompetition=e=>n.createElement(o.b,null,n.createElement(o.v,{href:e.rulesUrl,target:"_blank"},e.title)),this.state={isProcessingRulesAcceptance:!1}}render(){return n.createElement(s.a,{title:"Competition Rules",acceptLabel:"I Understand and Accept",cancelLabel:"I Do Not Accept",open:this.props.show,onAccept:this.onAcceptCompetitionRules,onCancel:this.onDeclineCompetitionRules},n.createElement(d,null,n.createElement("div",null,1!==this.props.competitions.length||this.props.showLinkToRules?this.renderMultipleCompetitionsText():this.renderSingleCompetitionText()),this.state.isProcessingRulesAcceptance&&n.createElement(u.a,null)))}}},1857:function(e,a,l){"use strict";var t=l(1),n=l.n(t),i=l(0),r=l(206),o=l(6);const s={light:{separator:o.c},dark:{separator:o.j}},u=n.a.div`
+  border-bottom: ${e=>e.separator&&`1px solid ${e.theme.material.color.brand.grey[200]}`};
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: ${e=>e.paddingBottom};
+  padding-top: 62px;
+  width: 100%;
+
+  @media (max-width: ${e=>e.theme.size.breakpoint.screen.tablet.max}) {
+    flex-wrap: ${e=>"wrap"===e.wrap&&"wrap"};
+  }
+`,c=n.a.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: ${e=>e.theme.material.spacing(165)};
+  width: 100%;
+`,d=n()(r.k)`
+  font-weight: bold;
+  margin-bottom: ${e=>e.theme.material.spacing(2)};
+  font-family: ${e=>e.theme.material.typography.display1.fontFamily};
+`,b=n()(r.b)`
+  line-height: 22px;
+`,v=n.a.div`
+  align-items: center;
+  display: flex;
+  min-height: 100%;
+  flex-shrink: 0;
+
+  @media (max-width: ${e=>e.theme.size.breakpoint.screen.tablet.max}) {
+    display: ${e=>"hide"===e.wrap&&"none"};
+    margin-top: ${e=>"wrap"===e.wrap&&e.theme.material.spacing(4)};
+  }
+`,m=e=>{const{className:a,title:l,separator:t,subtitle:n,meta:r,wrap:o="wrap"}=e,s=n||r?"58px":"30px";return i.createElement(u,{wrap:o,className:a,paddingBottom:s,separator:t},i.createElement(c,null,i.createElement(d,null,l),i.createElement(b,null,n)),i.createElement(v,{wrap:o},r))};l.d(a,"a",(function(){return x}));const p=n.a.div`
+  border-bottom: ${e=>e.separator&&`1px solid ${e.contentTheme.separator}`};
+  display: flex;
+  height: 200px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @media (max-width: ${e=>e.theme.size.breakpoint.screen.tablet.max}) {
+    flex-wrap: ${e=>"wrap"===e.wrap&&"wrap"};
+    justify-content: center;
+  }
+`,h=n.a.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 48px;
+  max-width: ${e=>e.theme.material.spacing(165)};
+  width: 100%;
+`,g=n()(r.k)`
+  font-weight: bold;
+  margin-bottom: ${e=>e.theme.material.spacing(4)};
+  font-family: ${e=>e.theme.material.typography.display1.fontFamily};
+`,f=n()(r.s)`
+  line-height: 22px;
+`,w=n.a.div`
+  margin-top: 24px;
+`,E=n.a.div`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-shrink: 0;
+
+  @media (max-width: ${e=>e.theme.size.breakpoint.screen.tablet.max}) {
+    display: ${e=>"hide"===e.wrap&&"none"};
+  }
+`,x=e=>{const{className:a,title:l,separator:n,subtitle:r,meta:o,wrap:u="wrap",useKM:c,style:d,actions:b}=e,v=i.useContext(t.ThemeContext),x=s[v.name];return c?i.createElement(p,{wrap:u,className:a,separator:n,contentTheme:x,style:d},i.createElement(h,null,i.createElement(g,{useKM:!0},l),i.createElement(f,{useKM:!0},r),b&&i.createElement(w,null,b)),i.createElement(E,{wrap:u},o)):i.createElement(m,Object.assign({},e))}},1887:function(e,a,l){"use strict";var t=l(206),n=l(1632),i=l(1432),r=l(9),o=l(1),s=l.n(o),u=l(0);function c(e){for(let a of d)if(e==a.value)return a.label;return null}const d=[{label:"Afghanistan",value:"AF"},{label:"Albania",value:"AL"},{label:"Algeria",value:"DZ"},{label:"American Samoa",value:"AS"},{label:"Andorra",value:"AD"},{label:"Angola",value:"AO"},{label:"Anguilla",value:"AI"},{label:"Antarctica",value:"AQ"},{label:"Antigua & Barbuda",value:"AG"},{label:"Argentina",value:"AR"},{label:"Armenia",value:"AM"},{label:"Aruba",value:"AW"},{label:"Australia",value:"AU"},{label:"Austria",value:"AT"},{label:"Azerbaijan",value:"AZ"},{label:"Bahamas",value:"BS"},{label:"Bahrain",value:"BH"},{label:"Bangladesh",value:"BD"},{label:"Barbados",value:"BB"},{label:"Belarus",value:"BY"},{label:"Belgium",value:"BE"},{label:"Belize",value:"BZ"},{label:"Benin",value:"BJ"},{label:"Bermuda",value:"BM"},{label:"Bhutan",value:"BT"},{label:"Bolivia",value:"BO"},{label:"Bosnia",value:"BA"},{label:"Botswana",value:"BW"},{label:"Bouvet Island",value:"BV"},{label:"Brazil",value:"BR"},{label:"British Indian Ocean Territory",value:"IO"},{label:"British Virgin Islands",value:"VG"},{label:"Brunei",value:"BN"},{label:"Bulgaria",value:"BG"},{label:"Burkina Faso",value:"BF"},{label:"Burundi",value:"BI"},{label:"Cambodia",value:"KH"},{label:"Cameroon",value:"CM"},{label:"Canada",value:"CA"},{label:"Cape Verde",value:"CV"},{label:"Caribbean Netherlands",value:"BQ"},{label:"Cayman Islands",value:"KY"},{label:"Central African Republic",value:"CF"},{label:"Chad",value:"TD"},{label:"Chile",value:"CL"},{label:"China",value:"CN"},{label:"Christmas Island",value:"CX"},{label:"Cocos (Keeling) Islands",value:"CC"},{label:"Colombia",value:"CO"},{label:"Comoros",value:"KM"},{label:"Congo - Brazzaville",value:"CG"},{label:"Congo - Kinshasa",value:"CD"},{label:"Cook Islands",value:"CK"},{label:"Costa Rica",value:"CR"},{label:"Croatia",value:"HR"},{label:"Cuba",value:"CU"},{label:"Curaçao",value:"CW"},{label:"Cyprus",value:"CY"},{label:"Czech Republic",value:"CZ"},{label:"Côte d’Ivoire",value:"CI"},{label:"Denmark",value:"DK"},{label:"Djibouti",value:"DJ"},{label:"Dominica",value:"DM"},{label:"Dominican Republic",value:"DO"},{label:"Ecuador",value:"EC"},{label:"Egypt",value:"EG"},{label:"El Salvador",value:"SV"},{label:"Equatorial Guinea",value:"GQ"},{label:"Eritrea",value:"ER"},{label:"Estonia",value:"EE"},{label:"Ethiopia",value:"ET"},{label:"Falkland Islands",value:"FK"},{label:"Faroe Islands",value:"FO"},{label:"Fiji",value:"FJ"},{label:"Finland",value:"FI"},{label:"France",value:"FR"},{label:"French Guiana",value:"GF"},{label:"French Polynesia",value:"PF"},{label:"French Southern Territories",value:"TF"},{label:"Gabon",value:"GA"},{label:"Gambia",value:"GM"},{label:"Georgia",value:"GE"},{label:"Germany",value:"DE"},{label:"Ghana",value:"GH"},{label:"Gibraltar",value:"GI"},{label:"Greece",value:"GR"},{label:"Greenland",value:"GL"},{label:"Grenada",value:"GD"},{label:"Guadeloupe",value:"GP"},{label:"Guam",value:"GU"},{label:"Guatemala",value:"GT"},{label:"Guernsey",value:"GG"},{label:"Guinea",value:"GN"},{label:"Guinea-Bissau",value:"GW"},{label:"Guyana",value:"GY"},{label:"Haiti",value:"HT"},{label:"Heard & McDonald Islands",value:"HM"},{label:"Honduras",value:"HN"},{label:"Hong Kong",value:"HK"},{label:"Hungary",value:"HU"},{label:"Iceland",value:"IS"},{label:"India",value:"IN"},{label:"Indonesia",value:"ID"},{label:"Iran",value:"IR"},{label:"Iraq",value:"IQ"},{label:"Ireland",value:"IE"},{label:"Isle of Man",value:"IM"},{label:"Israel",value:"IL"},{label:"Italy",value:"IT"},{label:"Jamaica",value:"JM"},{label:"Japan",value:"JP"},{label:"Jersey",value:"JE"},{label:"Jordan",value:"JO"},{label:"Kazakhstan",value:"KZ"},{label:"Kenya",value:"KE"},{label:"Kiribati",value:"KI"},{label:"Kuwait",value:"KW"},{label:"Kyrgyzstan",value:"KG"},{label:"Laos",value:"LA"},{label:"Latvia",value:"LV"},{label:"Lebanon",value:"LB"},{label:"Lesotho",value:"LS"},{label:"Liberia",value:"LR"},{label:"Libya",value:"LY"},{label:"Liechtenstein",value:"LI"},{label:"Lithuania",value:"LT"},{label:"Luxembourg",value:"LU"},{label:"Macau",value:"MO"},{label:"Macedonia",value:"MK"},{label:"Madagascar",value:"MG"},{label:"Malawi",value:"MW"},{label:"Malaysia",value:"MY"},{label:"Maldives",value:"MV"},{label:"Mali",value:"ML"},{label:"Malta",value:"MT"},{label:"Marshall Islands",value:"MH"},{label:"Martinique",value:"MQ"},{label:"Mauritania",value:"MR"},{label:"Mauritius",value:"MU"},{label:"Mayotte",value:"YT"},{label:"Mexico",value:"MX"},{label:"Micronesia",value:"FM"},{label:"Moldova",value:"MD"},{label:"Monaco",value:"MC"},{label:"Mongolia",value:"MN"},{label:"Montenegro",value:"ME"},{label:"Montserrat",value:"MS"},{label:"Morocco",value:"MA"},{label:"Mozambique",value:"MZ"},{label:"Myanmar",value:"MM"},{label:"Namibia",value:"NA"},{label:"Nauru",value:"NR"},{label:"Nepal",value:"NP"},{label:"Netherlands",value:"NL"},{label:"New Caledonia",value:"NC"},{label:"New Zealand",value:"NZ"},{label:"Nicaragua",value:"NI"},{label:"Niger",value:"NE"},{label:"Nigeria",value:"NG"},{label:"Niue",value:"NU"},{label:"Norfolk Island",value:"NF"},{label:"North Korea",value:"KP"},{label:"Northern Mariana Islands",value:"MP"},{label:"Norway",value:"NO"},{label:"Oman",value:"OM"},{label:"Pakistan",value:"PK"},{label:"Palau",value:"PW"},{label:"Palestine",value:"PS"},{label:"Panama",value:"PA"},{label:"Papua New Guinea",value:"PG"},{label:"Paraguay",value:"PY"},{label:"Peru",value:"PE"},{label:"Philippines",value:"PH"},{label:"Pitcairn Islands",value:"PN"},{label:"Poland",value:"PL"},{label:"Portugal",value:"PT"},{label:"Puerto Rico",value:"PR"},{label:"Qatar",value:"QA"},{label:"Romania",value:"RO"},{label:"Russia",value:"RU"},{label:"Rwanda",value:"RW"},{label:"Réunion",value:"RE"},{label:"Samoa",value:"WS"},{label:"San Marino",value:"SM"},{label:"Saudi Arabia",value:"SA"},{label:"Senegal",value:"SN"},{label:"Serbia",value:"RS"},{label:"Seychelles",value:"SC"},{label:"Sierra Leone",value:"SL"},{label:"Singapore",value:"SG"},{label:"Sint Maarten",value:"SX"},{label:"Slovakia",value:"SK"},{label:"Slovenia",value:"SI"},{label:"Solomon Islands",value:"SB"},{label:"Somalia",value:"SO"},{label:"South Africa",value:"ZA"},{label:"South Georgia & South Sandwich Islands",value:"GS"},{label:"South Korea",value:"KR"},{label:"South Sudan",value:"SS"},{label:"Spain",value:"ES"},{label:"Sri Lanka",value:"LK"},{label:"St. Barthélemy",value:"BL"},{label:"St. Helena",value:"SH"},{label:"St. Kitts & Nevis",value:"KN"},{label:"St. Lucia",value:"LC"},{label:"St. Martin",value:"MF"},{label:"St. Pierre & Miquelon",value:"PM"},{label:"St. Vincent & Grenadines",value:"VC"},{label:"Sudan",value:"SD"},{label:"Suriname",value:"SR"},{label:"Svalbard & Jan Mayen",value:"SJ"},{label:"Swaziland",value:"SZ"},{label:"Sweden",value:"SE"},{label:"Switzerland",value:"CH"},{label:"Syria",value:"SY"},{label:"São Tomé & Príncipe",value:"ST"},{label:"Taiwan",value:"TW"},{label:"Tajikistan",value:"TJ"},{label:"Tanzania",value:"TZ"},{label:"Thailand",value:"TH"},{label:"Timor-Leste",value:"TL"},{label:"Togo",value:"TG"},{label:"Tokelau",value:"TK"},{label:"Tonga",value:"TO"},{label:"Trinidad & Tobago",value:"TT"},{label:"Tunisia",value:"TN"},{label:"Turkey",value:"TR"},{label:"Turkmenistan",value:"TM"},{label:"Turks & Caicos Islands",value:"TC"},{label:"Tuvalu",value:"TV"},{label:"U.S. Outlying Islands",value:"UM"},{label:"U.S. Virgin Islands",value:"VI"},{label:"Uganda",value:"UG"},{label:"Ukraine",value:"UA"},{label:"United States",value:"US"},{label:"United Kingdom",value:"GB"},{label:"United Arab Emirates",value:"AE"},{label:"Uruguay",value:"UY"},{label:"Uzbekistan",value:"UZ"},{label:"Vanuatu",value:"VU"},{label:"Vatican City",value:"VA"},{label:"Venezuela",value:"VE"},{label:"Vietnam",value:"VN"},{label:"Wallis & Futuna",value:"WF"},{label:"Western Sahara",value:"EH"},{label:"Yemen",value:"YE"},{label:"Zambia",value:"ZM"},{label:"Zimbabwe",value:"ZW"}];l.d(a,"a",(function(){return f}));const b=s.a.a`
+  text-decoration: none;
+`,v=s.a.div`
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: start;
+  padding-bottom: ${e=>e.theme.material.spacing(8)};
+  padding-right: ${e=>e.theme.material.spacing(14)};
+  word-break: break-word;
+`,m=s.a.div`
+  padding-bottom: ${e=>e.theme.material.spacing(6)};
+`,p=s.a.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+`,h=s.a.div`
+  width: 320px;
+  padding: 24px;
+  box-sizing: border-box;
+  z-index: 1001;
+`,g=s.a.div`
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 4px;
+`,f=({userId:e,userName:a})=>{if(!r.featureFlags.avatarProfilePreview)return null;const[l,o]=u.useState(!1),[s,d]=u.useState(null);if(u.useEffect(()=>{s&&o(s.isFollowing)},[s]),u.useEffect(()=>{let a=!0;return e&&r.usersClient.profileService.getProfilePreview({userId:e}).then(e=>{a&&d(e)}).catch(()=>{}),()=>{a=!1}},[e]),u.useEffect(()=>{let l=!0;return a&&!e&&r.usersClient.profileService.getProfilePreview({userName:a}).then(e=>{l&&d(e)}).catch(()=>{}),()=>{l=!1}},[a]),!s)return null;const f=(()=>{var e;const a=null!==(e=(e=>{switch(e){case 0:return"novice";case 1:return"contributor";case 2:return"expert";case 3:return"master";case 4:return"grandmaster";case 5:return"staff";case 21:return"recalc"}})(s.performanceTier))&&void 0!==e?e:"";return a.substring(0,1).toUpperCase()+a.substring(1)})(),w=[s.city,s.region,c(s.country)].filter(Boolean).join(", ");return u.createElement(h,null,u.createElement(v,null,u.createElement(g,null,u.createElement(b,{href:s.profileUrl},u.createElement(t.b,{emphasis:"low"},s.userName)),u.createElement(b,{href:s.profileUrl},u.createElement(t.o,{emphasis:"high"},s.displayName))),u.createElement(p,null,u.createElement(n.a,{displayName:s.displayName,tier:s.performanceTier,profileUrl:s.profileUrl,thumbnailUrl:s.thumbnailUrl}))),u.createElement(m,null,u.createElement(g,null,u.createElement(t.b,{emphasis:"low"},"Kaggle ",f),w&&u.createElement(t.b,{emphasis:"low"},w),s.occupation&&u.createElement(t.b,{emphasis:"low"},s.occupation))),u.createElement(i.a,{emphasis:"medium",onClick:e=>{e.stopPropagation(),l?r.usersClient.usersService.unfollowUser({userName:s.userName}).then(()=>{o(!1)}).catch(()=>{}):r.usersClient.usersService.followUser({userName:s.userName}).then(()=>{o(!0)}).catch(()=>{})}},l?"Unfollow":"Follow"))}},1940:function(e,a,l){"use strict";l.d(a,"b",(function(){return s})),l.d(a,"a",(function(){return d}));var t=l(1),n=l.n(t),i=l(1625),r=l(0),o=l(13);const s=({children:e})=>{const[a,l]=r.useState(null);return e({targetRef:a,setTargetRef:l})},u=n.a.div`
+  box-shadow: ${e=>e.theme.material.elevation[2]};
+  background-color: white;
+  border-radius: 16px;
+  width: fit-content;
+`,c=(e,a,l,t=0)=>{const{top:n=0,left:i=0,width:r=0,height:o=0}=null!=a?a:{},{width:s=0,height:u=0}=null!=e?e:{};return`translate(${["left"===l[1]?i-s-t:i+r+t,"top"===l[0]?n-u-t:n+o+t].map(e=>`${e}px`).join(", ")})`},d=e=>{const{children:a,targetRef:l,timeout:t=500}=e,[n,s]=r.useState(!1),[d,b]=r.useState(!1),[v,m]=r.useState(!1),[p,h]=r.useState(null),[g,f]=r.useState(null),[w,E]=r.useState(null),[x,S]=r.useState(["bottom","right"]),y=()=>{if(!p)return;const{width:e,height:a}=p.getBoundingClientRect(),[l,t]=(e=>{var a;const l=null!==(a=e.style.transform.match(/scale\((.+),(.+)\)/))&&void 0!==a?a:[],[t=1,n=1]=l.map(parseFloat).filter(e=>!isNaN(e));return[1/t,1/n]})(p);f({width:e*l,height:a*t})},C=r.useMemo(()=>window.MutationObserver?new MutationObserver(y):null,[p]);r.useLayoutEffect(()=>{if(p&&C)return C.observe(p,{subtree:!0,childList:!0}),()=>{C.disconnect()}},[p]),r.useLayoutEffect(()=>{l&&E(l.getBoundingClientRect())},[d,l]),r.useLayoutEffect(()=>{p&&d&&y()},[d,p]),r.useEffect(()=>{if(!d)return;const e=()=>{b(!1)};return window.addEventListener("wheel",e),()=>{window.removeEventListener("wheel",e)}},[d]),r.useEffect(()=>{const e=setTimeout(()=>{b(n)},t);return()=>{clearTimeout(e)}},[n]),r.useEffect(()=>{if(!g||!w)return;const{width:e,height:a}=g,{bottom:l,right:t}=w;S([l+a>window.innerHeight?"top":"bottom",t+e>window.innerWidth?"left":"right"])},[g,w]),r.useEffect(()=>{if(!l)return;const e=()=>{E(l.getBoundingClientRect())};return window.addEventListener("resize",e),()=>{window.removeEventListener("resize",e)}},[l]);const M=()=>{s(!0)},I=()=>{s(!1)};return r.useEffect(()=>{if(l)return l.addEventListener("mouseenter",M),l.addEventListener("mouseleave",I),()=>{l.removeEventListener("mouseenter",M),l.removeEventListener("mouseleave",I)}},[l]),r.createElement(r.Fragment,null,(n||d||v)&&o.createPortal(r.createElement("div",{style:{position:"absolute",top:0,left:0,transform:c(g,w,x,4),zIndex:1001}},r.createElement(i.a,{in:d,style:{transformOrigin:["top"===x[0]?"bottom":"top","left"===x[1]?"right":"left"].join(" ")},onEnter:()=>{m(!0)},onExited:()=>{m(!1)}},r.createElement(u,{ref:h,onMouseEnter:M,onMouseLeave:I},a))),document.body))}},2011:function(e,a,l){"use strict";l.d(a,"b",(function(){return o})),l.d(a,"a",(function(){return s}));var t=l(1940),n=l(1632),i=l(0),r=l(1887);const o=e=>{var a,l,t,n,i;return e?{thumbnailUrl:null!==(a=e.thumbnailUrl)&&void 0!==a?a:void 0,profileUrl:null!==(l=e.userUrl)&&void 0!==l?l:void 0,tier:null!==(t=e.tier)&&void 0!==t?t:void 0,displayName:null!==(n=e.displayName)&&void 0!==n?n:"",id:null!==(i=e.id)&&void 0!==i?i:void 0}:{size:"medium",tier:"deleted",displayName:"",thumbnailUrl:"/static/images/grey-thumbnail-small.png"}},s=({thumbnailUrl:e,size:a="medium",profileUrl:l,tier:o="novice",displayName:s="",id:u,openLinkInNewWindow:c,className:d})=>i.createElement(t.b,null,({targetRef:b,setTargetRef:v})=>i.createElement(i.Fragment,null,i.createElement(n.a,{ref:v,thumbnailUrl:e,size:a,profileUrl:l,tier:o,displayName:s,openLinkInNewWindow:c,className:d}),i.createElement(t.a,{targetRef:b},i.createElement(r.a,{userId:u,userName:null==l?void 0:l.substring(1)}))))},2167:function(e,a,l){"use strict";l.d(a,"a",(function(){return m}));var t=l(1),n=l.n(t),i=l(0),r=l(385),o=l(206),s=l(1466),u=l(397),c=l(1467);const d=n.a.div`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  :focus {
+    outline: none;
+    border: none;
+  }
+`,b=n()(r.a)`
+  margin-right: ${e=>e.theme.material.spacing(4)};
+`,v=n()(r.a)`
+  margin-left: ${e=>e.theme.material.spacing(2)};
+`,m=e=>{const[a,l]=i.useState(!1);return i.createElement(c.a,null,i.createElement(s.a,{open:a,focusOnOpen:e.focusOnOpen,anchorCorner:"bottomLeft",hoistToBody:!0,onSelect:a=>{a.detail.item.textContent&&e.onSelect(e.options[a.detail.index],a.detail.index)},onClose:()=>l(!1),style:{zIndex:1001}},e.options.map((a,l)=>i.createElement(u.a,{key:a},e.optionIcons&&e.optionIcons[l]&&i.createElement(b,{useKM:!0,icon:e.optionIcons[l]}),e.renderOption?e.renderOption(a):a))),i.createElement(d,{tabIndex:0,onClick:()=>l(!0)},e.renderButton?e.renderButton(e.value):i.createElement(o.s,{emphasis:"high"},e.value),i.createElement(v,{icon:"arrow_drop_down",size:"small"})))}},2364:function(e,a,l){"use strict";var t=l(1),n=l.n(t),i=l(0),r=l(1609),o=l(385),s=l(6);const u={light:{default:{border:s.d},selected:{border:s.l}},dark:{default:{border:s.i},selected:{border:s.b}}};l.d(a,"a",(function(){return p}));const c=n.a.div`
+  height: ${e=>e.small?"32px":"48px"};
+  width: 100%;
+  position: relative;
+`,d=n.a.input`
+  font-size: ${e=>e.small?"12px":"14px"};
+  padding-left: ${e=>e.small?"40px":"60px"};
+  border: 1px solid ${e=>u[e.theme.name].default.border};
+  border-radius: 24px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  box-sizing: border-box;
+  transition: border 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border: 1px solid ${e=>u[e.theme.name].selected.border};
+  }
+`,b=n()(r.a)`
+  position: absolute;
+  top: ${e=>e.small?"8px":"12px"};
+  left: ${e=>e.small?"12px":"24px"};
+`,v=n()(o.a)`
+  position: absolute;
+  top: ${e=>e.small?"8px":"12px"};
+  left: ${e=>e.small?"12px":"24px"};
+`,m=n.a.div`
+  position: absolute;
+  top: 12px;
+  right: 24px;
+`,p=e=>{const{actionItem:a,placeholder:l,onChange:t,small:n,className:r,value:o,disabled:s,searchInProgress:u,onFocus:p,onBlur:h}=e,[g,f]=i.useState("");i.useEffect(()=>{f(o||"")},[o]);return i.createElement(c,{className:r,small:n},u?i.createElement(b,{size:n?"xsmall":"medium",small:n}):i.createElement(v,{useKM:!0,icon:"search",size:n?"xsmall":"medium",small:n}),i.createElement(d,{placeholder:l,value:g,onChange:e=>{t(e),f(e.target.value)},small:n,disabled:s,onFocus:p,onBlur:h}),!n&&a&&i.createElement(m,{className:r},a))}},2365:function(e,a,l){"use strict";var t=l(1),n=l.n(t),i=l(0),r=l(174),o=l(398),s=l(385),u=l(206),c=l(6);const d={light:{border:c.e,default:{hover:c.b,background:c.s,icon:c.n},selected:{hover:c.j,background:c.n,icon:c.s}},dark:{border:c.h,default:{hover:c.j,background:c.n,icon:c.s},selected:{hover:c.b,background:c.s,icon:c.n}}};l.d(a,"a",(function(){return g}));const b=n.a.div`
+  display: flex;
+  height: ${e=>e.dense?"24px":"36px"};
+  align-items: center;
+`,v=n()(u.d)`
+  padding: 0 8px;
+  height: 100%;
+  text-align: center;
+  line-height: ${e=>e.dense?"24px":"36px"};
+  border: 1px solid ${e=>d[e.theme.name].border};
+  border-top-right-radius: ${e=>e.upOnly&&(e.dense?"12px":"18px")};
+  border-bottom-right-radius: ${e=>e.upOnly&&(e.dense?"12px":"18px")};
+  padding-right: ${e=>e.upOnly&&"12px"};
+`,m=n.a.div`
+  border: 1px solid ${e=>d[e.theme.name].border};
+  height: ${e=>e.dense?"24px":"36px"};
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s ease;
+  background-color: ${e=>d[e.theme.name][e.selected?"selected":"default"].background};
+
+  && > i {
+    transition: color 0.25s ease;
+    color: ${e=>d[e.theme.name][e.selected?"selected":"default"].icon};
+  }
+
+  &:hover {
+    transition: background-color 0.25s ease;
+    background-color: ${e=>d[e.theme.name][e.selected?"selected":"default"].hover};
+  }
+`,p=n()(m)`
+  border-top-left-radius: ${e=>e.dense?"12px":"18px"};
+  border-bottom-left-radius: ${e=>e.dense?"12px":"18px"};
+  border-right: none;
+  padding: 0 4px 0 8px;
+`,h=n()(m)`
+  border-top-right-radius: ${e=>e.dense?"12px":"18px"};
+  border-bottom-right-radius: ${e=>e.dense?"12px":"18px"};
+  border-left: none;
+  padding: 0 4px 0 4px;
+`,g=e=>{const{dense:a,totalVotes:l,upOnly:t,hasUpvote:n,hasDownvote:u,onUpvote:c,onDownvote:d=(()=>{})}=e,m=Object(o.a)(e),[g,f]=i.useState(n||!1),[w,E]=i.useState(u||!1),x=i.useCallback(Object(r.b)(500,e=>{c instanceof Promise?c(e).catch(a=>{console.error(a),f(!e)}):c(e)}),[]),S=i.useCallback(Object(r.b)(500,e=>{c instanceof Promise&&d(e).catch(a=>{console.error(a),E(!e)})}),[]);let y=l+(Number(g)-Number(n));return t||(y-=Number(w)-Number(u)),i.createElement(b,Object.assign({dense:a},m),i.createElement(p,{dense:a,selected:g,onClick:e=>{e.stopPropagation(),f(!g),x(!g)}},i.createElement(s.a,{useKM:!0,size:"xsmall",icon:"arrow_drop_up"})),i.createElement(v,{dense:a,upOnly:t},y),!t&&i.createElement(h,{dense:a,selected:u,onClick:e=>{e.stopPropagation(),E(!w),S(!w)}},i.createElement(s.a,{useKM:!0,icon:"arrow_drop_down"})))}}}]);
