@@ -1,6 +1,7 @@
 # Insert: O(1) — No collisions (best case)
 # Insert: O(n) — If all the keys mapped to the same index,
 # we would need to probe over all n elements (Worst Case)
+# DOCKER TEST to trigger every 5 minutes
 
 class HashTable_linear_probing:
     def __init__(self):
